@@ -4,7 +4,7 @@ const  initialState = [
   ]
 ;
 
-const todos = (state = initialState, action) => {
+const todos = (state = [], action) => {
     switch (action.type) {
       case 'ADD_TODO':
         return [
@@ -20,9 +20,9 @@ const todos = (state = initialState, action) => {
           ...action.todos
         ]
       case 'DELETE_TODO':
-        return state.filter( (todo,idx) => idx !== action.idx )
+        return state.filter( (todo) => todo.id !== action.idx )
       case 'EDIT_TODO':
-      return  state.map((todo,idx,todos)=>{
+      return  state.map((todo,idx)=>{
            if(action.idx === idx){
             return  {'name':action.name,'isComplete':action.isComplete}
            }

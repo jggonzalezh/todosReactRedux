@@ -2,10 +2,10 @@
 import React from 'react';
 import {connect } from 'react-redux'
 import { toggleEditForm } from '../actions'
-import { editTodo } from '../actions'
+import { putTodo } from '../actions'
 
 
-const  getTodoToEdit =(todos,idx) => todos.find( ( todo, id) =>  id === idx   ) 
+const  getTodoToEdit =(todos,idx) => todos.find( ( todo) =>  todo.id === idx   ) 
 
 
 const mapStateToProps = state => ({
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
  const mapDispatchToProps = dispatch => ({
     toggleEditForm: isVisible => dispatch(toggleEditForm(isVisible)),
-    editTodo :  (idx,name,isComplete) => dispatch(editTodo(idx,name,isComplete))
+    editTodo :  (idx,name,isComplete) => dispatch(putTodo(idx,name,isComplete))
   })
 
  class EditTodo extends React.Component {
@@ -28,7 +28,9 @@ const mapStateToProps = state => ({
 
       handleSubmit(event) {
         event.preventDefault();
+        if(  (this.input.current.value !== this.props.todo.name) || (this.check.current.checked !==this.props.todo.isComplete )){
         this.props.editTodo(this.props.editFormVisible,this.input.current.value,this.check.current.checked);
+       }
         this.props.toggleEditForm(null);
       }    
 

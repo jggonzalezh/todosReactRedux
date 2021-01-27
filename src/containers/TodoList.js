@@ -1,6 +1,6 @@
 import {connect } from 'react-redux'
 import TodoTable from '../components/TodoTable'
-import  { deleteTodo }  from '../actions/'
+import  { deleteTodoAsync }  from '../actions/'
 import { toggleEditForm} from '../actions'
 
 const mapStateToProps = state => ({
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-   deleteTodo: idx => dispatch(deleteTodo(idx)),
+   deleteTodo: idx => dispatch(deleteTodoAsync(idx)),
    toggleEditForm: isVisible => dispatch(toggleEditForm(isVisible))
  })
 

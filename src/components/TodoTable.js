@@ -16,12 +16,12 @@ const TodoTable =({todos,deleteTodo,toggleEditForm}) => (
                     </thead>
                     <tbody >{
                                todos.map(
-                                            (todo,idx)=> 
+                                            (todo)=> 
                                             <TodoRow 
-                                                    key={idx} 
+                                                    key={todo.id} 
                                                     {...todo}  
-                                                    onClick={ () => deleteTodo(idx)}
-                                                    onEdit={()=> toggleEditForm(idx)}
+                                                    onClick={ () => deleteTodo(todo.id)}
+                                                    onEdit={()=> toggleEditForm(todo.id)}
                                                     />
                                          )
                             }
